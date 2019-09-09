@@ -56,6 +56,11 @@ namespace LTI.RobotSimulator.UI
                 Simulation.Robot.Theta = -(float)rotationNumericUpDown.Value;
             }
 
+            if (Simulation.Robot.DistanceToEnd <= 5)
+            {
+                Simulation.Robot.DisableMovement();
+            }
+
             Simulation.Robot.Speed = (float)speedNumericUpDown.Value;
             Simulation.Robot.LeftWheel.Text.DisplayedString = Simulation.Robot.LeftWheel.Speed.ToString();
             Simulation.Robot.RightWheel.Text.DisplayedString = Simulation.Robot.RightWheel.Speed.ToString();

@@ -16,7 +16,6 @@ namespace LTI.RobotSimulator.Core
                 TransformShapes();
 
                 StartPoint = new Point(_x, _y);
-                //EndPoint = new Point(_x, _y);
             }
         }
 
@@ -29,7 +28,6 @@ namespace LTI.RobotSimulator.Core
                 TransformShapes();
 
                 StartPoint = new Point(_x, _y);
-                //EndPoint = new Point(_x, _y);
             }
         }
 
@@ -122,6 +120,11 @@ namespace LTI.RobotSimulator.Core
         public Vector2f Path
         {
             get { return new Vector2f(EndPoint.X - _x, _y - EndPoint.Y); }
+        }
+
+        public float DistanceToEnd
+        {
+            get { return (float)Math.Sqrt(Math.Pow(EndPoint.X - _x, 2) + Math.Pow(EndPoint.Y - _y, 2)); }
         }
     }
 }
