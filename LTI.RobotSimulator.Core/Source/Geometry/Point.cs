@@ -15,6 +15,13 @@ namespace LTI.RobotSimulator.Core
         {
             _x = 0.0F;
             _y = 0.0F;
+
+            Circle = new CircleShape(5.0F)
+            {
+                Origin = new Vector2f(5.0F, 5.0F),
+                Position = new Vector2f(_x, _y),
+                FillColor = Color.White
+            };
         }
 
         public Point(float x, float y)

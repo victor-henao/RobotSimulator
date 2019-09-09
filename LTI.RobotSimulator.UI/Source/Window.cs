@@ -28,6 +28,8 @@ namespace LTI.RobotSimulator.UI
 
             Simulation.Robot.X = renderTarget.Width / 2;
             Simulation.Robot.Y = renderTarget.Height / 2;
+            Simulation.Robot.EndPoint.X = renderTarget.Width / 2;
+            Simulation.Robot.EndPoint.Y = renderTarget.Height / 2;
 
             ClientSize = new Size(renderTarget.Location.X + renderTarget.Width + 6 + robotGroupBox.Width + 12, renderTarget.Location.Y + renderTarget.Height + 12);
             robotGroupBox.Location = new System.Drawing.Point(renderTarget.Location.X + renderTarget.Width + 6, 24);
@@ -160,21 +162,14 @@ namespace LTI.RobotSimulator.UI
 
         private void RobotStartButton_Click(object sender, EventArgs e)
         {
-            if (Simulation.Robot.DefinedPath)
-            {
-                Simulation.HasStarted = true;
-                Simulation.Robot.EnableMovement();
+            Simulation.HasStarted = true;
+            Simulation.Robot.EnableMovement();
 
-                resetSpeedButton.Enabled = false;
-                resetRotationButton.Enabled = false;
-                robotStartButton.Enabled = false;
-                robotPauseButton.Enabled = true;
-                rotationNumericUpDown.Enabled = false;
-            }
-            else
-            {
-                MessageBox.Show("The robot path isn't defined yet!", "Error");
-            }
+            resetSpeedButton.Enabled = false;
+            resetRotationButton.Enabled = false;
+            robotStartButton.Enabled = false;
+            robotPauseButton.Enabled = true;
+            rotationNumericUpDown.Enabled = false;
         }
 
         private void RobotPauseButton_Click(object sender, EventArgs e)
