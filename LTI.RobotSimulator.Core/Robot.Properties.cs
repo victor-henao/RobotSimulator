@@ -97,7 +97,7 @@ namespace LTI.RobotSimulator.Core
             }
         }
 
-        public bool CanMove { get; private set; }
+        public bool CanMove { get; set; }
         private CircleShape Circle { get; set; }
         private RectangleShape Rectangle { get; set; }
         public Trajectory Trajectory { get; private set; }

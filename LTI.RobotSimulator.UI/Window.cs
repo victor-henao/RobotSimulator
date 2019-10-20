@@ -30,7 +30,7 @@ namespace LTI.RobotSimulator.UI
 
             Simulation.Robot.X = renderTarget.Width / 2;
             Simulation.Robot.Y = renderTarget.Height / 2;
-            Simulation.Robot.EndPoint.Position = new SFML.System.Vector2f(renderTarget.Width / 2, renderTarget.Height / 2);
+            Simulation.Robot.EndPoint.Position = new Vector2f(renderTarget.Width / 2, renderTarget.Height / 2);
 
             ClientSize = new Size(renderTarget.Location.X + renderTarget.Width + 6 + robotGroupBox.Width + 12, renderTarget.Location.Y + renderTarget.Height + 12);
             robotGroupBox.Location = new System.Drawing.Point(renderTarget.Location.X + renderTarget.Width + 6, 24);
@@ -59,7 +59,7 @@ namespace LTI.RobotSimulator.UI
 
             if (Simulation.Robot.DistanceToEnd <= 5)
             {
-                Simulation.Robot.DisableMovement();
+                Simulation.Robot.CanMove = false;
             }
 
             Simulation.Robot.Speed = (float)speedNumericUpDown.Value;
@@ -168,7 +168,7 @@ namespace LTI.RobotSimulator.UI
         private void RobotStartButton_Click(object sender, EventArgs e)
         {
             Simulation.HasStarted = true;
-            Simulation.Robot.EnableMovement();
+            Simulation.Robot.CanMove = true;
 
             resetSpeedButton.Enabled = false;
             resetRotationButton.Enabled = false;
@@ -179,7 +179,7 @@ namespace LTI.RobotSimulator.UI
 
         private void RobotPauseButton_Click(object sender, EventArgs e)
         {
-            Simulation.Robot.DisableMovement();
+            Simulation.Robot.CanMove = false;
 
             robotPauseButton.Enabled = false;
             robotResumeButton.Enabled = true;
@@ -187,7 +187,7 @@ namespace LTI.RobotSimulator.UI
 
         private void RobotResumeButton_Click(object sender, EventArgs e)
         {
-            Simulation.Robot.EnableMovement();
+            Simulation.Robot.CanMove = true;
 
             robotPauseButton.Enabled = true;
             robotResumeButton.Enabled = false;

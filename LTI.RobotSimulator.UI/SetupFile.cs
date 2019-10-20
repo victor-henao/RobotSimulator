@@ -1,10 +1,10 @@
 ﻿using LTI.RobotSimulator.Core;
 using LTI.RobotSimulator.Core.Geometry;
+using SFML.System;
 using System.Collections;
 using System.Drawing;
 using System.IO;
 using System.Text.RegularExpressions;
-using SFML.System;
 
 namespace LTI.RobotSimulator.UI
 {

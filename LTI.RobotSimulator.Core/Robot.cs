@@ -48,16 +48,6 @@ namespace LTI.RobotSimulator.Core
             EndPoint = new Point();
         }
 
-        public void EnableMovement()
-        {
-            CanMove = true;
-        }
-
-        public void DisableMovement()
-        {
-            CanMove = false;
-        }
-
         /// <summary>
         /// Draws the robot's shapes.
         /// </summary>

@@ -1,8 +1,8 @@
 ﻿using LTI.RobotSimulator.Core;
 using LTI.RobotSimulator.Core.Geometry;
 using SFML.Graphics;
-using System.IO;
 using SFML.System;
+using System.IO;
 
 namespace LTI.RobotSimulator.UI
 {
