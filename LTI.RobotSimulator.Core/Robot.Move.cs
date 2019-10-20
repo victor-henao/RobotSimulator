@@ -22,7 +22,7 @@ namespace LTI.RobotSimulator.Core
         {
             float highestSensorSpeed = 0.0F;
 
-            TrajectoryPoint trajectoryPoint = new TrajectoryPoint(new Vector2f(_x, _y), _theta);
+            TrajectoryPoint trajectoryPoint = new TrajectoryPoint(_position, _theta);
             trajectoryPoint.FillColor = Color.Green;
 
             // Finds the points discovered by sensors for a trajectory point
@@ -53,13 +53,13 @@ namespace LTI.RobotSimulator.Core
             }
             else if (Math.Round(GeometryTools.CrossProduct(Direction, Path)) < 0) // Left
             {
-                LeftWheel.Speed = _speed * 2.0F;
+                LeftWheel.Speed = _speed * 2F;
                 RightWheel.Speed = _speed;
             }
             else if (Math.Round(GeometryTools.CrossProduct(Direction, Path)) > 0) // Right
             {
                 LeftWheel.Speed = _speed;
-                RightWheel.Speed = _speed * 2.0F;
+                RightWheel.Speed = _speed * 2F;
             }
         }
 
@@ -78,8 +78,11 @@ namespace LTI.RobotSimulator.Core
 
             float thetaDelta = ((RightWheel.Radius * rightWheelAngleDelta) - (LeftWheel.Radius * leftWheelAngleDelta)) / (2 * _radius);
 
-            _x += (LeftWheel.Radius * leftWheelAngleDelta + RightWheel.Radius * rightWheelAngleDelta) / 2 * (float)Math.Cos(-_theta);
-            _y += (LeftWheel.Radius * leftWheelAngleDelta + RightWheel.Radius * rightWheelAngleDelta) / 2 * (float)Math.Sin(-_theta);
+            _position += new Vector2f(
+                (LeftWheel.Radius * leftWheelAngleDelta + RightWheel.Radius * rightWheelAngleDelta) / 2 * (float)Math.Cos(-_theta),
+                (LeftWheel.Radius * leftWheelAngleDelta + RightWheel.Radius * rightWheelAngleDelta) / 2 * (float)Math.Sin(-_theta));
+            //_x += (LeftWheel.Radius * leftWheelAngleDelta + RightWheel.Radius * rightWheelAngleDelta) / 2 * (float)Math.Cos(-_theta);
+            //_y += (LeftWheel.Radius * leftWheelAngleDelta + RightWheel.Radius * rightWheelAngleDelta) / 2 * (float)Math.Sin(-_theta);
             _theta += thetaDelta;
         }
 
@@ -88,27 +91,27 @@ namespace LTI.RobotSimulator.Core
         /// </summary>
         private void TransformShapes()
         {
-            Circle.Position = new Vector2f(_x, _y);
-            Rectangle.Position = new Vector2f(_x, _y);
+            Circle.Position = _position;
+            Rectangle.Position = _position;
             Rectangle.Rotation = GeometryTools.ToDegrees(-_theta);
 
             LeftWheel.Text.Position = new Vector2f(
-                _x + (float)Math.Cos((-Math.PI / 2) - _theta) * _radius,
-                _y + (float)Math.Sin((-Math.PI / 2) - _theta) * _radius);
+                _position.X + (float)Math.Cos((-Math.PI / 2) - _theta) * _radius,
+                _position.Y + (float)Math.Sin((-Math.PI / 2) - _theta) * _radius);
 
             RightWheel.Text.Position = new Vector2f(
-                _x + (float)Math.Cos((Math.PI / 2) - _theta) * _radius,
-                _y + (float)Math.Sin((Math.PI / 2) - _theta) * _radius);
+                _position.X + (float)Math.Cos((Math.PI / 2) - _theta) * _radius,
+                _position.Y + (float)Math.Sin((Math.PI / 2) - _theta) * _radius);
 
             if (SensorCount != 0)
             {
                 for (byte sensorNumber = 0; sensorNumber < SensorCount; sensorNumber++)
                 {
                     ((Sensor)Sensors[sensorNumber]).X =
-                        _x + (float)Math.Cos((sensorNumber * (2 * Math.PI / SensorCount)) - _theta) * _radius;
+                        _position.X + (float)Math.Cos((sensorNumber * (2 * Math.PI / SensorCount)) - _theta) * _radius;
 
                     ((Sensor)Sensors[sensorNumber]).Y =
-                        _y + (float)Math.Sin((sensorNumber * (2 * Math.PI / SensorCount)) - _theta) * _radius;
+                        _position.Y + (float)Math.Sin((sensorNumber * (2 * Math.PI / SensorCount)) - _theta) * _radius;
                 }
             }
         }

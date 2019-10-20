@@ -28,8 +28,7 @@ namespace LTI.RobotSimulator.UI
             SetupFile.Read(@"..\..\..\resource\settings.ini");
             renderTarget.Size = SetupFile.SurfaceSize;
 
-            Simulation.Robot.X = renderTarget.Width / 2;
-            Simulation.Robot.Y = renderTarget.Height / 2;
+            Simulation.Robot.Position = new Vector2f(renderTarget.Width / 2, renderTarget.Height / 2);
             Simulation.Robot.EndPoint.Position = new Vector2f(renderTarget.Width / 2, renderTarget.Height / 2);
 
             ClientSize = new Size(renderTarget.Location.X + renderTarget.Width + 6 + robotGroupBox.Width + 12, renderTarget.Location.Y + renderTarget.Height + 12);
@@ -145,8 +144,7 @@ namespace LTI.RobotSimulator.UI
             {
                 if (e.Button == MouseButtons.Left) // Moves the robot with the mouse and defines a start point
                 {
-                    Simulation.Robot.X = e.Location.X;
-                    Simulation.Robot.Y = e.Location.Y;
+                    Simulation.Robot.Position = new Vector2f(e.Location.X, e.Location.Y);
                 }
                 else if (e.Button == MouseButtons.Right) // Defines an end point
                 {

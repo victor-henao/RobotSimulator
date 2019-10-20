@@ -15,14 +15,14 @@ namespace LTI.RobotSimulator.Core
 
             Circle = new CircleShape()
             {
-                Radius = 2.0F,
-                Origin = new Vector2f(2.0F, 2.0F),
+                Radius = 2,
+                Origin = new Vector2f(2, 2),
                 FillColor = Color.Yellow
             };
 
-            Angle = 0.0F;
-            Distance = 0.0F;
-            Line = new DrawableLine(new Vector2f(Simulation.Robot.X, Simulation.Robot.Y), new Vector2f(_x, _y));
+            Angle = 0;
+            Distance = 0;
+            Line = new DrawableLine(Simulation.Robot.Position, new Vector2f(_x, _y));
             ID = 0;
             HasFoundPoint = false;
             PreviousCloudPoint = CloudPoint = new CloudPoint();

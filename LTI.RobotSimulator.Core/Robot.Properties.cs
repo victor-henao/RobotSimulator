@@ -11,28 +11,14 @@ namespace LTI.RobotSimulator.Core
         /// <summary>
         /// This property is modified only when the user moves the robot with the mouse.
         /// </summary>
-        public float X
+        public Vector2f Position
         {
-            get { return _x; }
+            get { return _position; }
             set
             {
-                _x = value;
+                _position = value;
                 TransformShapes();
                 StartPoint = new Point();
-            }
-        }
-
-        /// <summary>
-        /// This property is modified only when the user moves the robot with the mouse.
-        /// </summary>
-        public float Y
-        {
-            get { return _y; }
-            set
-            {
-                _y = value;
-                TransformShapes();
-                StartPoint = new Point(new Vector2f(_x, _y));
             }
         }
 
@@ -108,11 +94,6 @@ namespace LTI.RobotSimulator.Core
         public Point StartPoint { get; set; }
         public Point EndPoint { get; set; }
 
-        public Point Position
-        {
-            get { return new Point(new Vector2f(_x, _y)); }
-        }
-
         public Vector2f Direction
         {
             get { return new Vector2f((float)Math.Cos(_theta), (float)Math.Sin(_theta)); }
@@ -120,12 +101,12 @@ namespace LTI.RobotSimulator.Core
 
         public Vector2f Path
         {
-            get { return new Vector2f(EndPoint.Position.X - _x, _y - EndPoint.Position.Y); }
+            get { return new Vector2f(EndPoint.Position.X - _position.X, _position.Y - EndPoint.Position.Y); }
         }
 
         public float DistanceToEnd
         {
-            get { return (float)Math.Sqrt(Math.Pow(EndPoint.Position.X - _x, 2) + Math.Pow(EndPoint.Position.Y - _y, 2)); }
+            get { return (float)Math.Sqrt(Math.Pow(EndPoint.Position.X - _position.X, 2) + Math.Pow(EndPoint.Position.Y - _position.Y, 2)); }
         }
     }
 }
