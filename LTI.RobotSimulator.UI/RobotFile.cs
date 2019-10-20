@@ -2,6 +2,7 @@
 using LTI.RobotSimulator.Core.Geometry;
 using SFML.Graphics;
 using System.IO;
+using SFML.System;
 
 namespace LTI.RobotSimulator.UI
 {
@@ -76,8 +77,10 @@ namespace LTI.RobotSimulator.UI
                     float theta = float.Parse(pointLine[1]);
 
                     // Adds a trajectory point object to the trajectory
-                    TrajectoryPoint trajectoryPoint = new TrajectoryPoint(new SFML.System.Vector2f(x, y), theta);
-                    trajectoryPoint.FillColor = Color.Red;
+                    TrajectoryPoint trajectoryPoint = new TrajectoryPoint(new Vector2f(x, y), theta)
+                    {
+                        FillColor = Color.Red
+                    };
 
                     Trajectory.Points.Add(trajectoryPoint);
 
@@ -90,8 +93,10 @@ namespace LTI.RobotSimulator.UI
                         float pointFoundY = float.Parse(pointFoundCoordinates[1]);
 
                         // Adds a point object to the point cloud
-                        CloudPoint point = new CloudPoint(new SFML.System.Vector2f(pointFoundX, pointFoundY));
-                        point.FillColor = Color.Red;
+                        CloudPoint point = new CloudPoint(new Vector2f(pointFoundX, pointFoundY))
+                        {
+                            FillColor = Color.Red
+                        };
 
                         PointCloud.Points.Add(point);
                     }

@@ -4,6 +4,7 @@ using System.Collections;
 using System.Drawing;
 using System.IO;
 using System.Text.RegularExpressions;
+using SFML.System;
 
 namespace LTI.RobotSimulator.UI
 {
@@ -64,13 +65,13 @@ namespace LTI.RobotSimulator.UI
                             float x = float.Parse(point[0]);
                             float y = float.Parse(point[1]);
 
-                            wallPoints.Add(new SFML.System.Vector2f(x, y));
+                            wallPoints.Add(new Vector2f(x, y));
                         }
 
                         // segmentPoints now has 2 points
                         Simulation.Obstacles.Add(new DrawableLine(
-                            (SFML.System.Vector2f)wallPoints[0],
-                            (SFML.System.Vector2f)wallPoints[1]));
+                            (Vector2f)wallPoints[0],
+                            (Vector2f)wallPoints[1]));
                     }
                 }
             }

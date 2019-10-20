@@ -59,8 +59,6 @@ namespace LTI.RobotSimulator.Core
         private Line Line { get; set; }
         public byte ID { get; set; }
         public bool HasFoundPoint { get; private set; }
-
-        // These 2 points will determine the movement rate
         public CloudPoint PreviousCloudPoint { get; private set; }
         public CloudPoint CloudPoint { get; private set; }
 

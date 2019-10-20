@@ -18,7 +18,6 @@ namespace LTI.RobotSimulator.Core
             {
                 _x = value;
                 TransformShapes();
-
                 StartPoint = new Point();
             }
         }
@@ -33,7 +32,6 @@ namespace LTI.RobotSimulator.Core
             {
                 _y = value;
                 TransformShapes();
-
                 StartPoint = new Point(new Vector2f(_x, _y));
             }
         }
@@ -57,7 +55,6 @@ namespace LTI.RobotSimulator.Core
             set
             {
                 _radius = value;
-
                 Circle.Radius = _radius;
                 Circle.Origin = new Vector2f(_radius, _radius);
                 Rectangle.Size = new Vector2f(_radius * 2, 5.0F);
@@ -101,19 +98,13 @@ namespace LTI.RobotSimulator.Core
         }
 
         public bool CanMove { get; private set; }
-
-        // Drawable objects
         private CircleShape Circle { get; set; }
         private RectangleShape Rectangle { get; set; }
-
         public Trajectory Trajectory { get; private set; }
         public PointCloud PointCloud { get; private set; }
-
         public Wheel LeftWheel { get; set; }
         public Wheel RightWheel { get; set; }
-
         public ArrayList Sensors { get; private set; } // Contains sensor objects
-
         public Point StartPoint { get; set; }
         public Point EndPoint { get; set; }
 

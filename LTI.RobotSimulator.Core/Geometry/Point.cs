@@ -9,16 +9,13 @@ namespace LTI.RobotSimulator.Core.Geometry
     /// </summary>
     public class Point : CircleShape
     {
-        protected float _x, _y;
-
-        public Point() : base(5F)
+        public Point() : base(5)
         {
-            //FillColor = Color.White;
+            Origin = new Vector2f(5, 5);
         }
 
         public Point(Vector2f position) : this()
         {
-            Origin = new Vector2f(5.0F, 5.0F);
             Position = position;
         }
     }
@@ -30,13 +27,12 @@ namespace LTI.RobotSimulator.Core.Geometry
     {
         public CloudPoint() : base()
         {
-
+            Radius = 2;
+            Origin = new Vector2f(2, 2);
         }
 
-        public CloudPoint(Vector2f position) : base(position)
+        public CloudPoint(Vector2f position) : this()
         {
-            Radius = 2F;
-            Origin = new Vector2f(2F, 2F);
             Position = position;
         }
 
@@ -50,8 +46,8 @@ namespace LTI.RobotSimulator.Core.Geometry
     {
         public TrajectoryPoint(Vector2f position, float theta) : base(position)
         {
-            Radius = 2F;
-            Origin = new Vector2f(2F, 2F);
+            Radius = 2;
+            Origin = new Vector2f(2, 2);
             Theta = theta;
             PointsFoundBySensors = new ArrayList();
         }
