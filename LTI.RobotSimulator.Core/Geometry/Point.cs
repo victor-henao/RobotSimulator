@@ -2,7 +2,7 @@
 using SFML.System;
 using System.Collections;
 
-namespace LTI.RobotSimulator.Core
+namespace LTI.RobotSimulator.Core.Geometry
 {
     /// <summary>
     /// A classic drawable point.

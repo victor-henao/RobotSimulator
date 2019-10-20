@@ -1,4 +1,5 @@
-﻿using SFML.Graphics;
+﻿using LTI.RobotSimulator.Core.Geometry;
+using SFML.Graphics;
 using SFML.System;
 using System.Collections;
 
@@ -31,7 +32,7 @@ namespace LTI.RobotSimulator.Core
             {
                 Origin = new Vector2f(_radius, 5.0F / 2),
                 Position = new Vector2f(_x, _y),
-                Rotation = Geometry.ToDegrees(-_theta),
+                Rotation = GeometryTools.ToDegrees(-_theta),
                 FillColor = new Color(150, 150, 150, 255)
             };
 

@@ -1,12 +1,12 @@
 ﻿using SFML.System;
 using System;
 
-namespace LTI.RobotSimulator.Core
+namespace LTI.RobotSimulator.Core.Geometry
 {
     /// <summary>
     /// Provides geometry tools.
     /// </summary>
-    public static class Geometry
+    public static class GeometryTools
     {
         /// <summary>
         /// Solves a system of 2 equations with 2 variables.

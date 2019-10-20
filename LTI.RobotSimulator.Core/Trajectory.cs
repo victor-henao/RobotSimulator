@@ -1,4 +1,5 @@
-﻿using SFML.Graphics;
+﻿using LTI.RobotSimulator.Core.Geometry;
+using SFML.Graphics;
 using System.Collections;
 
 namespace LTI.RobotSimulator.Core

@@ -1,4 +1,5 @@
 ﻿using LTI.RobotSimulator.Core;
+using LTI.RobotSimulator.Core.Geometry;
 using SFML.Graphics;
 using System.IO;
 
@@ -38,7 +39,7 @@ namespace LTI.RobotSimulator.UI
             foreach (TrajectoryPoint trajectoryPoint in Simulation.Robot.Trajectory.Points)
             {
                 // Point coordinates and angle
-                file.Write(trajectoryPoint.X.ToString() + "_" + trajectoryPoint.Y.ToString() + " " + (trajectoryPoint.Theta + Geometry.ToRadians(Simulation.Robot.Theta)).ToString());
+                file.Write(trajectoryPoint.X.ToString() + "_" + trajectoryPoint.Y.ToString() + " " + (trajectoryPoint.Theta + GeometryTools.ToRadians(Simulation.Robot.Theta)).ToString());
 
                 // Points found by each sensor
                 foreach (CloudPoint cloudPoint in trajectoryPoint.PointsFoundBySensors)

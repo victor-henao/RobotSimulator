@@ -1,4 +1,5 @@
 ﻿using LTI.RobotSimulator.Core;
+using LTI.RobotSimulator.Core.Geometry;
 using SFML.Graphics;
 using SFML.Window;
 using System;

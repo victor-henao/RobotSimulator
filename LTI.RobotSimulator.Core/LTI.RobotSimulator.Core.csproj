@@ -54,19 +54,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Source\Geometry\Geometry.cs" />
-    <Compile Include="Source\Geometry\Line.cs" />
-    <Compile Include="Source\Geometry\Point.cs" />
-    <Compile Include="Source\PointCloud.cs" />
+    <Compile Include="Geometry\GeometryTools.cs" />
+    <Compile Include="Geometry\Line.cs" />
+    <Compile Include="Geometry\Point.cs" />
+    <Compile Include="Geometry\PointCloud.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Source\Robot\Robot.cs" />
-    <Compile Include="Source\Robot\Robot.Move.cs" />
-    <Compile Include="Source\Robot\Robot.Properties.cs" />
-    <Compile Include="Source\Sensor\Sensor.cs" />
-    <Compile Include="Source\Sensor\Sensor.FindPoint.cs" />
-    <Compile Include="Source\Simulation.cs" />
-    <Compile Include="Source\Trajectory.cs" />
-    <Compile Include="Source\Robot\Wheel.cs" />
+    <Compile Include="Robot.cs" />
+    <Compile Include="Robot.Move.cs" />
+    <Compile Include="Robot.Properties.cs" />
+    <Compile Include="Sensor.cs" />
+    <Compile Include="Sensor.FindPoint.cs" />
+    <Compile Include="Simulation.cs" />
+    <Compile Include="Trajectory.cs" />
+    <Compile Include="Wheel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

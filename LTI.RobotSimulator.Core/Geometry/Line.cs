@@ -1,7 +1,7 @@
 ﻿using SFML.Graphics;
 using SFML.System;
 
-namespace LTI.RobotSimulator.Core
+namespace LTI.RobotSimulator.Core.Geometry
 {
     public class Line
     {

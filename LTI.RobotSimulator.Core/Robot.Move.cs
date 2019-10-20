@@ -1,4 +1,5 @@
-﻿using SFML.Graphics;
+﻿using LTI.RobotSimulator.Core.Geometry;
+using SFML.Graphics;
 using SFML.System;
 using System;
 
@@ -45,17 +46,17 @@ namespace LTI.RobotSimulator.Core
 
         private void UpdateDirection()
         {
-            if (Math.Round(Geometry.CrossProduct(Direction, Path)) >= -1 && Math.Round(Geometry.CrossProduct(Direction, Path)) <= 1) // Same direction
+            if (Math.Round(GeometryTools.CrossProduct(Direction, Path)) >= -1 && Math.Round(GeometryTools.CrossProduct(Direction, Path)) <= 1) // Same direction
             {
                 LeftWheel.Speed = _speed;
                 RightWheel.Speed = _speed;
             }
-            else if (Math.Round(Geometry.CrossProduct(Direction, Path)) < 0) // Left
+            else if (Math.Round(GeometryTools.CrossProduct(Direction, Path)) < 0) // Left
             {
                 LeftWheel.Speed = _speed * 2.0F;
                 RightWheel.Speed = _speed;
             }
-            else if (Math.Round(Geometry.CrossProduct(Direction, Path)) > 0) // Right
+            else if (Math.Round(GeometryTools.CrossProduct(Direction, Path)) > 0) // Right
             {
                 LeftWheel.Speed = _speed;
                 RightWheel.Speed = _speed * 2.0F;
@@ -69,8 +70,8 @@ namespace LTI.RobotSimulator.Core
         /// <param name="rightWheelAngleDelta">Angle value to add to the left wheel.</param>
         private void ApplyAngle(float leftWheelAngleDelta, float rightWheelAngleDelta)
         {
-            leftWheelAngleDelta = Geometry.ToRadians(leftWheelAngleDelta);
-            rightWheelAngleDelta = Geometry.ToRadians(rightWheelAngleDelta);
+            leftWheelAngleDelta = GeometryTools.ToRadians(leftWheelAngleDelta);
+            rightWheelAngleDelta = GeometryTools.ToRadians(rightWheelAngleDelta);
 
             LeftWheel.Angle += leftWheelAngleDelta;
             RightWheel.Angle += rightWheelAngleDelta;
@@ -89,7 +90,7 @@ namespace LTI.RobotSimulator.Core
         {
             Circle.Position = new Vector2f(_x, _y);
             Rectangle.Position = new Vector2f(_x, _y);
-            Rectangle.Rotation = Geometry.ToDegrees(-_theta);
+            Rectangle.Rotation = GeometryTools.ToDegrees(-_theta);
 
             LeftWheel.Text.Position = new Vector2f(
                 _x + (float)Math.Cos((-Math.PI / 2) - _theta) * _radius,

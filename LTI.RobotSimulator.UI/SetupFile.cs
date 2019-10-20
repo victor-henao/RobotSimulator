@@ -1,4 +1,5 @@
 ﻿using LTI.RobotSimulator.Core;
+using LTI.RobotSimulator.Core.Geometry;
 using System.Collections;
 using System.Drawing;
 using System.IO;

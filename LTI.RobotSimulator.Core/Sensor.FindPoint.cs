@@ -1,4 +1,5 @@
-﻿using SFML.Graphics;
+﻿using LTI.RobotSimulator.Core.Geometry;
+using SFML.Graphics;
 using SFML.System;
 using System;
 using System.Collections.Generic;
@@ -26,7 +27,7 @@ namespace LTI.RobotSimulator.Core
             {
                 if (Line.M != wallLine.M) // If the lines aren't parallel, let's solve the equation system
                 {
-                    CloudPoint cloudPoint = Geometry.SolveEquationSystem(Line, wallLine);
+                    CloudPoint cloudPoint = GeometryTools.SolveEquationSystem(Line, wallLine);
                     Distance = (float)Math.Sqrt(Math.Pow(cloudPoint.X - Simulation.Robot.X, 2) + Math.Pow(cloudPoint.Y - Simulation.Robot.Y, 2));
 
                     // Determines if the point is on the segment

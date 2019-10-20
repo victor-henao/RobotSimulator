@@ -1,7 +1,7 @@
 ﻿using SFML.Graphics;
 using System.Collections;
 
-namespace LTI.RobotSimulator.Core
+namespace LTI.RobotSimulator.Core.Geometry
 {
     /// <summary>
     /// A set of drawable points.

@@ -1,4 +1,5 @@
-﻿using SFML.Graphics;
+﻿using LTI.RobotSimulator.Core.Geometry;
+using SFML.Graphics;
 using SFML.System;
 using System;
 using System.Collections;
@@ -33,10 +34,10 @@ namespace LTI.RobotSimulator.Core
 
         public float Theta
         {
-            get { return Geometry.ToDegrees(-_theta); }
+            get { return GeometryTools.ToDegrees(-_theta); }
             set
             {
-                _theta = Geometry.ToRadians(-value);
+                _theta = GeometryTools.ToRadians(-value);
                 TransformShapes();
             }
         }
