@@ -39,12 +39,12 @@ namespace LTI.RobotSimulator.UI
             foreach (TrajectoryPoint trajectoryPoint in Simulation.Robot.Trajectory.Points)
             {
                 // Point coordinates and angle
-                file.Write(trajectoryPoint.X.ToString() + "_" + trajectoryPoint.Y.ToString() + " " + (trajectoryPoint.Theta + GeometryTools.ToRadians(Simulation.Robot.Theta)).ToString());
+                file.Write(trajectoryPoint.Position.X.ToString() + "_" + trajectoryPoint.Position.Y.ToString() + " " + (trajectoryPoint.Theta + GeometryTools.ToRadians(Simulation.Robot.Theta)).ToString());
 
                 // Points found by each sensor
                 foreach (CloudPoint cloudPoint in trajectoryPoint.PointsFoundBySensors)
                 {
-                    file.Write(" " + cloudPoint.X.ToString() + "_" + cloudPoint.Y.ToString());
+                    file.Write(" " + cloudPoint.Position.X.ToString() + "_" + cloudPoint.Position.Y.ToString());
                 }
 
                 file.WriteLine();
@@ -76,8 +76,8 @@ namespace LTI.RobotSimulator.UI
                     float theta = float.Parse(pointLine[1]);
 
                     // Adds a trajectory point object to the trajectory
-                    TrajectoryPoint trajectoryPoint = new TrajectoryPoint(x, y, theta);
-                    trajectoryPoint.Circle.FillColor = Color.Red;
+                    TrajectoryPoint trajectoryPoint = new TrajectoryPoint(new SFML.System.Vector2f(x, y), theta);
+                    trajectoryPoint.FillColor = Color.Red;
 
                     Trajectory.Points.Add(trajectoryPoint);
 
@@ -90,8 +90,8 @@ namespace LTI.RobotSimulator.UI
                         float pointFoundY = float.Parse(pointFoundCoordinates[1]);
 
                         // Adds a point object to the point cloud
-                        CloudPoint point = new CloudPoint(pointFoundX, pointFoundY);
-                        point.Circle.FillColor = Color.Red;
+                        CloudPoint point = new CloudPoint(new SFML.System.Vector2f(pointFoundX, pointFoundY));
+                        point.FillColor = Color.Red;
 
                         PointCloud.Points.Add(point);
                     }

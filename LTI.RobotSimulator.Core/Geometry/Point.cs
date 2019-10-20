@@ -7,66 +7,19 @@ namespace LTI.RobotSimulator.Core.Geometry
     /// <summary>
     /// A classic drawable point.
     /// </summary>
-    public class Point : Drawable
+    public class Point : CircleShape
     {
         protected float _x, _y;
 
-        public Point()
+        public Point() : base(5F)
         {
-            _x = 0.0F;
-            _y = 0.0F;
-
-            Circle = new CircleShape(5.0F)
-            {
-                Origin = new Vector2f(5.0F, 5.0F),
-                Position = new Vector2f(_x, _y),
-                FillColor = Color.White
-            };
+            //FillColor = Color.White;
         }
 
-        public Point(float x, float y)
+        public Point(Vector2f position) : this()
         {
-            _x = x;
-            _y = y;
-
-            Circle = new CircleShape(5.0F)
-            {
-                Origin = new Vector2f(5.0F, 5.0F),
-                Position = new Vector2f(_x, _y),
-                FillColor = Color.White
-            };
-        }
-
-        public CircleShape Circle { get; set; }
-
-        public float X
-        {
-            get { return _x; }
-            set
-            {
-                _x = value;
-                Circle.Position = new Vector2f(_x, _y);
-            }
-        }
-
-        public float Y
-        {
-            get { return _y; }
-            set
-            {
-                _y = value;
-                Circle.Position = new Vector2f(_x, _y);
-            }
-        }
-
-        /// <summary>
-        /// Draws the point.
-        /// </summary>
-        /// <param name="target">The render target.</param>
-        /// <param name="states">The render states (default).</param>
-        public void Draw(RenderTarget target, RenderStates states)
-        {
-            Circle.Draw(target, states);
+            Origin = new Vector2f(5.0F, 5.0F);
+            Position = position;
         }
     }
 
@@ -75,12 +28,16 @@ namespace LTI.RobotSimulator.Core.Geometry
     /// </summary>
     public sealed class CloudPoint : Point
     {
-        public CloudPoint() : base() { }
-
-        public CloudPoint(float x, float y) : base(x, y)
+        public CloudPoint() : base()
         {
-            Circle.Radius = 2.0F;
-            Circle.Origin = new Vector2f(2.0F, 2.0F);
+
+        }
+
+        public CloudPoint(Vector2f position) : base(position)
+        {
+            Radius = 2F;
+            Origin = new Vector2f(2F, 2F);
+            Position = position;
         }
 
         public float DistanceFromSensor { get; set; }
@@ -91,11 +48,10 @@ namespace LTI.RobotSimulator.Core.Geometry
     /// </summary>
     public sealed class TrajectoryPoint : Point
     {
-        public TrajectoryPoint(float x, float y, float theta) : base(x, y)
+        public TrajectoryPoint(Vector2f position, float theta) : base(position)
         {
-            Circle.Radius = 2.0F;
-            Circle.Origin = new Vector2f(2.0F, 2.0F);
-
+            Radius = 2F;
+            Origin = new Vector2f(2F, 2F);
             Theta = theta;
             PointsFoundBySensors = new ArrayList();
         }

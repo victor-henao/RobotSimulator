@@ -8,6 +8,9 @@ namespace LTI.RobotSimulator.Core
 {
     partial class Robot
     {
+        /// <summary>
+        /// This property is modified only when the user moves the robot with the mouse.
+        /// </summary>
         public float X
         {
             get { return _x; }
@@ -16,10 +19,13 @@ namespace LTI.RobotSimulator.Core
                 _x = value;
                 TransformShapes();
 
-                StartPoint = new Point(_x, _y);
+                StartPoint = new Point();
             }
         }
 
+        /// <summary>
+        /// This property is modified only when the user moves the robot with the mouse.
+        /// </summary>
         public float Y
         {
             get { return _y; }
@@ -28,10 +34,13 @@ namespace LTI.RobotSimulator.Core
                 _y = value;
                 TransformShapes();
 
-                StartPoint = new Point(_x, _y);
+                StartPoint = new Point(new Vector2f(_x, _y));
             }
         }
 
+        /// <summary>
+        /// This property is modified only when the user moves the robot with the mouse.
+        /// </summary>
         public float Theta
         {
             get { return GeometryTools.ToDegrees(-_theta); }
@@ -110,7 +119,7 @@ namespace LTI.RobotSimulator.Core
 
         public Point Position
         {
-            get { return new Point(_x, _y); }
+            get { return new Point(new Vector2f(_x, _y)); }
         }
 
         public Vector2f Direction
@@ -120,12 +129,12 @@ namespace LTI.RobotSimulator.Core
 
         public Vector2f Path
         {
-            get { return new Vector2f(EndPoint.X - _x, _y - EndPoint.Y); }
+            get { return new Vector2f(EndPoint.Position.X - _x, _y - EndPoint.Position.Y); }
         }
 
         public float DistanceToEnd
         {
-            get { return (float)Math.Sqrt(Math.Pow(EndPoint.X - _x, 2) + Math.Pow(EndPoint.Y - _y, 2)); }
+            get { return (float)Math.Sqrt(Math.Pow(EndPoint.Position.X - _x, 2) + Math.Pow(EndPoint.Position.Y - _y, 2)); }
         }
     }
 }

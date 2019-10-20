@@ -22,8 +22,8 @@ namespace LTI.RobotSimulator.Core
         {
             float highestSensorSpeed = 0.0F;
 
-            TrajectoryPoint trajectoryPoint = new TrajectoryPoint(_x, _y, _theta);
-            trajectoryPoint.Circle.FillColor = Color.Green;
+            TrajectoryPoint trajectoryPoint = new TrajectoryPoint(new Vector2f(_x, _y), _theta);
+            trajectoryPoint.FillColor = Color.Green;
 
             // Finds the points discovered by sensors for a trajectory point
             foreach (Sensor sensor in Sensors)

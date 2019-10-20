@@ -43,7 +43,7 @@ namespace LTI.RobotSimulator.Core.Geometry
                 y = (sensorLine.M * x) + sensorLine.P;                          // Y point coordinate
             }
 
-            return new CloudPoint(x, y);
+            return new CloudPoint(new Vector2f(x, y));
         }
 
         /// <summary>

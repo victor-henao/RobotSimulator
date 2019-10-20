@@ -28,31 +28,31 @@ namespace LTI.RobotSimulator.Core
                 if (Line.M != wallLine.M) // If the lines aren't parallel, let's solve the equation system
                 {
                     CloudPoint cloudPoint = GeometryTools.SolveEquationSystem(Line, wallLine);
-                    Distance = (float)Math.Sqrt(Math.Pow(cloudPoint.X - Simulation.Robot.X, 2) + Math.Pow(cloudPoint.Y - Simulation.Robot.Y, 2));
+                    Distance = (float)Math.Sqrt(Math.Pow(cloudPoint.Position.X - Simulation.Robot.X, 2) + Math.Pow(cloudPoint.Position.Y - Simulation.Robot.Y, 2));
 
                     // Determines if the point is on the segment
                     if (wallLine.A.X != wallLine.B.X)                               // Non-vertical wall
                     {
-                        if (cloudPoint.X >= wallLine.A.X && cloudPoint.X <= wallLine.B.X)
+                        if (cloudPoint.Position.X >= wallLine.A.X && cloudPoint.Position.X <= wallLine.B.X)
                         {
                             if (Line.A.X != Line.B.X)                               // Non-vertical sensor line
                             {
-                                if (_x >= Simulation.Robot.X && cloudPoint.X >= _x)      // Right
+                                if (_x >= Simulation.Robot.X && cloudPoint.Position.X >= _x)      // Right
                                 {
                                     CloudPoints.Add(cloudPoint, Distance);
                                 }
-                                else if (_x < Simulation.Robot.X && cloudPoint.X <= _x)  // left
+                                else if (_x < Simulation.Robot.X && cloudPoint.Position.X <= _x)  // left
                                 {
                                     CloudPoints.Add(cloudPoint, Distance);
                                 }
                             }
                             else                                                    // Vertical sensor line
                             {
-                                if (_y < Simulation.Robot.Y && cloudPoint.Y < _y)        // Up
+                                if (_y < Simulation.Robot.Y && cloudPoint.Position.Y < _y)        // Up
                                 {
                                     CloudPoints.Add(cloudPoint, Distance);
                                 }
-                                else if (_y > Simulation.Robot.Y && cloudPoint.Y > _y)   // Down
+                                else if (_y > Simulation.Robot.Y && cloudPoint.Position.Y > _y)   // Down
                                 {
                                     CloudPoints.Add(cloudPoint, Distance);
                                 }
@@ -61,13 +61,13 @@ namespace LTI.RobotSimulator.Core
                     }
                     else // Vertical wall
                     {
-                        if (cloudPoint.Y >= wallLine.A.Y && cloudPoint.Y <= wallLine.B.Y)
+                        if (cloudPoint.Position.Y >= wallLine.A.Y && cloudPoint.Position.Y <= wallLine.B.Y)
                         {
-                            if (_x >= Simulation.Robot.X && cloudPoint.X >= _x)
+                            if (_x >= Simulation.Robot.X && cloudPoint.Position.X >= _x)
                             {
                                 CloudPoints.Add(cloudPoint, Distance);
                             }
-                            else if (_x < Simulation.Robot.X && cloudPoint.X <= _x)
+                            else if (_x < Simulation.Robot.X && cloudPoint.Position.X <= _x)
                             {
                                 CloudPoints.Add(cloudPoint, Distance);
                             }
@@ -84,7 +84,7 @@ namespace LTI.RobotSimulator.Core
                 var nearestPoint = CloudPoints.OrderBy(pair => pair.Value).Take(1); // Sorts by ascending distances
                 HasFoundPoint = true;
                 CloudPoint = nearestPoint.ElementAt(0).Key;
-                CloudPoint.Circle.FillColor = Color.Green;
+                CloudPoint.FillColor = Color.Green;
                 CloudPoint.DistanceFromSensor = Distance;
                 Simulation.Robot.PointCloud.Points.Add(CloudPoint); // Selects the first point (the nearest one)
             }
