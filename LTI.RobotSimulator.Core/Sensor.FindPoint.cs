@@ -18,7 +18,7 @@ namespace LTI.RobotSimulator.Core
 
             // Updates the sensor vertices
             Line.A = Simulation.Robot.Position; // First vertex: robot's center
-            Line.B = new Vector2f(_x, _y); // Second vertex: sensor's center
+            Line.B = Position; // Second vertex: sensor's center
 
             // Contains cloud point objects and their distance from the sensor.
             Dictionary<CloudPoint, float> CloudPoints = new Dictionary<CloudPoint, float>();
@@ -37,22 +37,22 @@ namespace LTI.RobotSimulator.Core
                         {
                             if (Line.A.X != Line.B.X)                               // Non-vertical sensor line
                             {
-                                if (_x >= Simulation.Robot.Position.X && cloudPoint.Position.X >= _x)      // Right
+                                if (Position.X >= Simulation.Robot.Position.X && cloudPoint.Position.X >= Position.X)      // Right
                                 {
                                     CloudPoints.Add(cloudPoint, Distance);
                                 }
-                                else if (_x < Simulation.Robot.Position.X && cloudPoint.Position.X <= _x)  // left
+                                else if (Position.X < Simulation.Robot.Position.X && cloudPoint.Position.X <= Position.X)  // left
                                 {
                                     CloudPoints.Add(cloudPoint, Distance);
                                 }
                             }
                             else                                                    // Vertical sensor line
                             {
-                                if (_y < Simulation.Robot.Position.Y && cloudPoint.Position.Y < _y)        // Up
+                                if (Position.Y < Simulation.Robot.Position.Y && cloudPoint.Position.Y < Position.Y)        // Up
                                 {
                                     CloudPoints.Add(cloudPoint, Distance);
                                 }
-                                else if (_y > Simulation.Robot.Position.Y && cloudPoint.Position.Y > _y)   // Down
+                                else if (Position.Y > Simulation.Robot.Position.Y && cloudPoint.Position.Y > Position.Y)   // Down
                                 {
                                     CloudPoints.Add(cloudPoint, Distance);
                                 }
@@ -63,11 +63,11 @@ namespace LTI.RobotSimulator.Core
                     {
                         if (cloudPoint.Position.Y >= wallLine.A.Y && cloudPoint.Position.Y <= wallLine.B.Y)
                         {
-                            if (_x >= Simulation.Robot.Position.X && cloudPoint.Position.X >= _x)
+                            if (Position.X >= Simulation.Robot.Position.X && cloudPoint.Position.X >= Position.X)
                             {
                                 CloudPoints.Add(cloudPoint, Distance);
                             }
-                            else if (_x < Simulation.Robot.Position.X && cloudPoint.Position.X <= _x)
+                            else if (Position.X < Simulation.Robot.Position.X && cloudPoint.Position.X <= Position.X)
                             {
                                 CloudPoints.Add(cloudPoint, Distance);
                             }
