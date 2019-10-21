@@ -43,8 +43,8 @@ namespace LTI.RobotSimulator.Core
                 _radius = value;
                 Circle.Radius = _radius;
                 Circle.Origin = new Vector2f(_radius, _radius);
-                Rectangle.Size = new Vector2f(_radius * 2, 5.0F);
-                Rectangle.Origin = new Vector2f(_radius, 5.0F / 2);
+                Rectangle.Size = new Vector2f(_radius * 2, 5);
+                Rectangle.Origin = new Vector2f(_radius, 5 / 2);
             }
         }
 

@@ -20,7 +20,7 @@ namespace LTI.RobotSimulator.Core
         /// </summary>
         private void UpdateSensors()
         {
-            float highestSensorSpeed = 0.0F;
+            float highestSensorSpeed = 0;
 
             TrajectoryPoint trajectoryPoint = new TrajectoryPoint(_position, _theta)
             {
@@ -55,13 +55,13 @@ namespace LTI.RobotSimulator.Core
             }
             else if (Math.Round(GeometryTools.CrossProduct(Direction, Path)) < 0) // Left
             {
-                LeftWheel.Speed = _speed * 2F;
+                LeftWheel.Speed = _speed * 2;
                 RightWheel.Speed = _speed;
             }
             else if (Math.Round(GeometryTools.CrossProduct(Direction, Path)) > 0) // Right
             {
                 LeftWheel.Speed = _speed;
-                RightWheel.Speed = _speed * 2F;
+                RightWheel.Speed = _speed * 2;
             }
         }
 
@@ -83,8 +83,7 @@ namespace LTI.RobotSimulator.Core
             _position += new Vector2f(
                 (LeftWheel.Radius * leftWheelAngleDelta + RightWheel.Radius * rightWheelAngleDelta) / 2 * (float)Math.Cos(-_theta),
                 (LeftWheel.Radius * leftWheelAngleDelta + RightWheel.Radius * rightWheelAngleDelta) / 2 * (float)Math.Sin(-_theta));
-            //_x += (LeftWheel.Radius * leftWheelAngleDelta + RightWheel.Radius * rightWheelAngleDelta) / 2 * (float)Math.Cos(-_theta);
-            //_y += (LeftWheel.Radius * leftWheelAngleDelta + RightWheel.Radius * rightWheelAngleDelta) / 2 * (float)Math.Sin(-_theta);
+
             _theta += thetaDelta;
         }
 

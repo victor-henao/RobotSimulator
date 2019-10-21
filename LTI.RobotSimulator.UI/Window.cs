@@ -155,7 +155,7 @@ namespace LTI.RobotSimulator.UI
 
         private void ResetSpeedButton_Click(object sender, EventArgs e)
         {
-            speedNumericUpDown.Value = 0.0M;
+            speedNumericUpDown.Value = 0;
         }
 
         private void ResetRotationButton_Click(object sender, EventArgs e)

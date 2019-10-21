@@ -8,7 +8,7 @@ namespace LTI.RobotSimulator.Core
         public Wheel(float radius)
         {
             Radius = radius;
-            Angle = 0F;
+            Angle = 0;
             TextSize = 20;
             Font font = new Font(@"..\..\..\resource\consola.ttf");
 

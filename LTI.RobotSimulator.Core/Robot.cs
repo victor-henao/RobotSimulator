@@ -17,7 +17,7 @@ namespace LTI.RobotSimulator.Core
             _theta = 0;
             _radius = 0;
             _sensorCount = 0;
-            _speed = 0.0F;
+            _speed = 0;
 
             CanMove = false;
 
@@ -28,9 +28,9 @@ namespace LTI.RobotSimulator.Core
                 FillColor = new Color(180, 180, 180, 255)
             };
 
-            Rectangle = new RectangleShape(new Vector2f(_radius * 2, 5.0F))
+            Rectangle = new RectangleShape(new Vector2f(_radius * 2, 5))
             {
-                Origin = new Vector2f(_radius, 5.0F / 2),
+                Origin = new Vector2f(_radius, 5 / 2),
                 Position = _position,
                 Rotation = GeometryTools.ToDegrees(-_theta),
                 FillColor = new Color(150, 150, 150, 255)
