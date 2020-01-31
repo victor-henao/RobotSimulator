@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace LTI.RobotSimulator.UI
+namespace LTI.RobotSimulator
 {
     static class Program
     {

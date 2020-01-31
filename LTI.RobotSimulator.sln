@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.29020.237
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LTI.RobotSimulator.Core", "LTI.RobotSimulator.Core\LTI.RobotSimulator.Core.csproj", "{070BCBE8-193F-42A4-A6FB-E5A152E89952}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LTI.RobotSimulator.UI", "LTI.RobotSimulator.UI\LTI.RobotSimulator.UI.csproj", "{C0901AEB-FB76-4602-A323-4825816EE328}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LTI.RobotSimulator", "LTI.RobotSimulator.UI\LTI.RobotSimulator.csproj", "{C0901AEB-FB76-4602-A323-4825816EE328}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

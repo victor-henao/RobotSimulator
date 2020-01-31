@@ -9,7 +9,7 @@ using System.Windows.Forms;
 using Color = SFML.Graphics.Color;
 using Sensor = LTI.RobotSimulator.Core.Sensor;
 
-namespace LTI.RobotSimulator.UI
+namespace LTI.RobotSimulator
 {
     public partial class Window : Form
     {

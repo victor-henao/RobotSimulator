@@ -1,4 +1,4 @@
-﻿namespace LTI.RobotSimulator.UI
+﻿namespace LTI.RobotSimulator
 {
     partial class Window
     {

@@ -4,7 +4,7 @@ using SFML.Graphics;
 using SFML.System;
 using System.IO;
 
-namespace LTI.RobotSimulator.UI
+namespace LTI.RobotSimulator
 {
     /// <summary>
     /// Saves and loads simulation data.
