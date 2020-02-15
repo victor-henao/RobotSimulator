@@ -6,7 +6,7 @@ using System.Drawing;
 using System.IO;
 using System.Text.RegularExpressions;
 
-namespace LTI.RobotSimulator.UI
+namespace LTI.RobotSimulator
 {
     /// <summary>
     /// Gets information from the settings.ini file to setup the simulator.

@@ -7,11 +7,11 @@ namespace LTI.RobotSimulator.Core
 {
     partial class Robot
     {
-        public void Move()
+        public void Move(float deltaTime)
         {
             UpdateSensors();
             UpdateDirection();
-            ApplyAngle(LeftWheel.Speed, RightWheel.Speed);
+            ApplyAngle(LeftWheel.Speed * deltaTime, RightWheel.Speed * deltaTime);
             TransformShapes();
         }
 

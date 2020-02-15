@@ -9,7 +9,7 @@ using System.Windows.Forms;
 using Color = SFML.Graphics.Color;
 using Sensor = LTI.RobotSimulator.Core.Sensor;
 
-namespace LTI.RobotSimulator.UI
+namespace LTI.RobotSimulator
 {
     public partial class Window : Form
     {
@@ -38,16 +38,16 @@ namespace LTI.RobotSimulator.UI
             CenterToScreen();
 
             Surface = new RenderWindow(renderTarget.Handle, new ContextSettings());
-            Surface.SetFramerateLimit(60);
+            Surface.SetVerticalSyncEnabled(true);
         }
 
-        public void OnUpdate()
+        public void OnUpdate(float deltaTime)
         {
             if (Simulation.HasStarted)
             {
                 if (Simulation.Robot.CanMove)
                 {
-                    Simulation.Robot.Move();
+                    Simulation.Robot.Move(deltaTime);
                     rotationNumericUpDown.Value = -(decimal)Simulation.Robot.Theta;
                 }
             }

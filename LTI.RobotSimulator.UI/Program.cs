@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
+using SFML.System;
 
-namespace LTI.RobotSimulator.UI
+namespace LTI.RobotSimulator
 {
     static class Program
     {
@@ -16,13 +17,18 @@ namespace LTI.RobotSimulator.UI
 
             using (Window window = new Window())
             {
-                window.Show();
-
-                while (window.Visible)
+                using (Clock clock = new Clock())
                 {
-                    Application.DoEvents();
-                    window.OnUpdate();
-                    window.OnRender();
+                    window.Show();
+
+                    while (window.Visible)
+                    {
+                        float deltaTime = clock.Restart().AsSeconds();
+
+                        Application.DoEvents();
+                        window.OnUpdate(deltaTime);
+                        window.OnRender();
+                    }
                 }
             }
         }

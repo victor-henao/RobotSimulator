@@ -90,7 +90,7 @@ namespace LTI.RobotSimulator.Core
         public PointCloud PointCloud { get; private set; }
         public Wheel LeftWheel { get; set; }
         public Wheel RightWheel { get; set; }
-        public ArrayList Sensors { get; private set; } // Contains sensor objects
+        public ArrayList Sensors { get; private set; }
         public Point StartPoint { get; set; }
         public Point EndPoint { get; set; }
 

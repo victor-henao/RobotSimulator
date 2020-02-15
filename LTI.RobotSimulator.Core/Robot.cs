@@ -17,7 +17,7 @@ namespace LTI.RobotSimulator.Core
             _theta = 0;
             _radius = 0;
             _sensorCount = 0;
-            _speed = 0;
+            _speed = 50;
 
             CanMove = false;
 
