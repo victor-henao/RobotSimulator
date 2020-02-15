@@ -92,9 +92,9 @@ namespace LTI.RobotSimulator.Core
         /// </summary>
         private void TransformShapes()
         {
-            Circle.Position = _position;
-            Rectangle.Position = _position;
-            Rectangle.Rotation = GeometryTools.ToDegrees(-_theta);
+            _circle.Position = _position;
+            _rectangle.Position = _position;
+            _rectangle.Rotation = GeometryTools.ToDegrees(-_theta);
 
             LeftWheel.Text.Position = new Vector2f(
                 _position.X + (float)Math.Cos((-Math.PI / 2) - _theta) * _radius,

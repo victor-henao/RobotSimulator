@@ -11,7 +11,7 @@ namespace LTI.RobotSimulator.Core
             Points = new ArrayList();
         }
 
-        public ArrayList Points { get; private set; } // Conrtains trajectory point objects
+        public ArrayList Points { get; private set; } // Contains trajectory point objects
 
         /// <summary>
         /// Draws the trajectory's points.

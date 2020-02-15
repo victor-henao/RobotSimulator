@@ -19,11 +19,6 @@ namespace LTI.RobotSimulator.Core
             PreviousCloudPoint = CloudPoint = new CloudPoint();
         }
 
-        public float Speed
-        {
-            get { return CloudPoint.DistanceFromSensor - PreviousCloudPoint.DistanceFromSensor; }
-        }
-
         public float Angle { get; set; }
         public float Distance { get; set; } // Distance between the sensor and a point from the point cloud
         private Line Line { get; set; }
@@ -31,5 +26,6 @@ namespace LTI.RobotSimulator.Core
         public bool HasFoundPoint { get; private set; }
         public CloudPoint PreviousCloudPoint { get; private set; }
         public CloudPoint CloudPoint { get; private set; }
+        public float Speed => CloudPoint.DistanceFromSensor - PreviousCloudPoint.DistanceFromSensor;
     }
 }

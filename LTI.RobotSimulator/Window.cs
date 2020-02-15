@@ -37,7 +37,7 @@ namespace LTI.RobotSimulator
 
             CenterToScreen();
 
-            _surface = new RenderWindow(renderTarget.Handle, new ContextSettings());
+            _surface = new RenderWindow(renderTarget.Handle);
             _surface.SetVerticalSyncEnabled(true);
         }
 

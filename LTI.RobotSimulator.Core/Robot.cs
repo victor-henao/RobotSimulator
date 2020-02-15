@@ -7,8 +7,12 @@ namespace LTI.RobotSimulator.Core
 {
     public sealed partial class Robot : Drawable
     {
+        private readonly CircleShape _circle;
+        private readonly RectangleShape _rectangle;
         private Vector2f _position;
-        private float _theta, _radius, _speed;
+        private float _theta;
+        private float _radius;
+        private float _speed;
         private byte _sensorCount;
 
         public Robot()
@@ -19,16 +23,16 @@ namespace LTI.RobotSimulator.Core
             _sensorCount = 0;
             _speed = 50;
 
-            CanMove = false;
 
-            Circle = new CircleShape(_radius)
+
+            _circle = new CircleShape(_radius)
             {
                 Origin = new Vector2f(_radius, _radius),
                 Position = _position,
                 FillColor = new Color(180, 180, 180, 255)
             };
 
-            Rectangle = new RectangleShape(new Vector2f(_radius * 2, 5))
+            _rectangle = new RectangleShape(new Vector2f(_radius * 2, 5))
             {
                 Origin = new Vector2f(_radius, 5 / 2),
                 Position = _position,
@@ -36,6 +40,7 @@ namespace LTI.RobotSimulator.Core
                 FillColor = new Color(150, 150, 150, 255)
             };
 
+            CanMove = false;
             Trajectory = new Trajectory();
             PointCloud = new PointCloud();
 
@@ -44,7 +49,7 @@ namespace LTI.RobotSimulator.Core
 
             Sensors = new ArrayList();
 
-            StartPoint = new Point();
+            StartPoint = new Point(Position);
             EndPoint = new Point();
         }
 
@@ -61,9 +66,8 @@ namespace LTI.RobotSimulator.Core
             }
 
             EndPoint.Draw(target, states);
-
-            Circle.Draw(target, states);
-            Rectangle.Draw(target, states);
+            _circle.Draw(target, states);
+            _rectangle.Draw(target, states);
         }
     }
 }
