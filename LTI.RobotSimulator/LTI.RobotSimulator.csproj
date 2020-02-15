@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{C0901AEB-FB76-4602-A323-4825816EE328}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>LTI.RobotSimulator.UI</RootNamespace>
+    <RootNamespace>LTI.RobotSimulator</RootNamespace>
     <AssemblyName>LTI.RobotSimulator</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

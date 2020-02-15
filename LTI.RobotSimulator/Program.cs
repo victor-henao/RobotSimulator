@@ -1,6 +1,6 @@
-﻿using System;
+﻿using SFML.System;
+using System;
 using System.Windows.Forms;
-using SFML.System;
 
 namespace LTI.RobotSimulator
 {
