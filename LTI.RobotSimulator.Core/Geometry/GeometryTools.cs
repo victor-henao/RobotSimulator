@@ -53,9 +53,7 @@ namespace LTI.RobotSimulator.Core.Geometry
         /// <param name="coordinate2">The second coordinates.</param>
         /// <returns>The distance (float).</returns>
         public static float Distance(Vector2f coordinate1, Vector2f coordinate2)
-        {
-            return (float)Math.Sqrt(Math.Pow(coordinate1.X - coordinate2.X, 2) + Math.Pow(coordinate1.Y - coordinate2.Y, 2));
-        }
+            => (float)Math.Sqrt(Math.Pow(coordinate1.X - coordinate2.X, 2) + Math.Pow(coordinate1.Y - coordinate2.Y, 2));
 
         /// <summary>
         /// Returns the cross product of 2 vectors.
@@ -64,9 +62,7 @@ namespace LTI.RobotSimulator.Core.Geometry
         /// <param name="vector2">The second vector.</param>
         /// <returns></returns>
         public static float CrossProduct(Vector2f vector1, Vector2f vector2)
-        {
-            return vector1.X * vector2.Y - (vector2.X * vector1.Y);
-        }
+            => vector1.X * vector2.Y - (vector2.X * vector1.Y);
 
         /// <summary>
         /// Converts an angle in radians to degrees.
@@ -74,9 +70,7 @@ namespace LTI.RobotSimulator.Core.Geometry
         /// <param name="angle">Angle value in radians.</param>
         /// <returns>The angle value in degrees.</returns>
         public static float ToDegrees(float angle)
-        {
-            return angle * (180 / (float)Math.PI);
-        }
+            => angle * (180 / (float)Math.PI);
 
         /// <summary>
         /// Converts an angle in degrees to radians.
@@ -84,8 +78,6 @@ namespace LTI.RobotSimulator.Core.Geometry
         /// <param name="angle">Angle value in degrees.</param>
         /// <returns>The angle value in radians.</returns>
         public static float ToRadians(float angle)
-        {
-            return angle * (float)Math.PI / 180;
-        }
+            => angle * (float)Math.PI / 180;
     }
 }
