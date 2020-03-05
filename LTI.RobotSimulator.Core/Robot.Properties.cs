@@ -41,10 +41,10 @@ namespace LTI.RobotSimulator.Core
             set
             {
                 _radius = value;
-                Circle.Radius = _radius;
-                Circle.Origin = new Vector2f(_radius, _radius);
-                Rectangle.Size = new Vector2f(_radius * 2, 5.0F);
-                Rectangle.Origin = new Vector2f(_radius, 5.0F / 2);
+                _circle.Radius = _radius;
+                _circle.Origin = new Vector2f(_radius, _radius);
+                _rectangle.Size = new Vector2f(_radius * 2, 5);
+                _rectangle.Origin = new Vector2f(_radius, 5 / 2);
             }
         }
 
@@ -84,29 +84,15 @@ namespace LTI.RobotSimulator.Core
         }
 
         public bool CanMove { get; set; }
-        private CircleShape Circle { get; set; }
-        private RectangleShape Rectangle { get; set; }
         public Trajectory Trajectory { get; private set; }
         public PointCloud PointCloud { get; private set; }
         public Wheel LeftWheel { get; set; }
         public Wheel RightWheel { get; set; }
-        public ArrayList Sensors { get; private set; } // Contains sensor objects
+        public ArrayList Sensors { get; private set; }
         public Point StartPoint { get; set; }
         public Point EndPoint { get; set; }
-
-        public Vector2f Direction
-        {
-            get { return new Vector2f((float)Math.Cos(_theta), (float)Math.Sin(_theta)); }
-        }
-
-        public Vector2f Path
-        {
-            get { return new Vector2f(EndPoint.Position.X - _position.X, _position.Y - EndPoint.Position.Y); }
-        }
-
-        public float DistanceToEnd
-        {
-            get { return (float)Math.Sqrt(Math.Pow(EndPoint.Position.X - _position.X, 2) + Math.Pow(EndPoint.Position.Y - _position.Y, 2)); }
-        }
+        public Vector2f Direction => new Vector2f((float)Math.Cos(_theta), (float)Math.Sin(_theta));
+        public Vector2f Path => new Vector2f(EndPoint.Position.X - _position.X, _position.Y - EndPoint.Position.Y);
+        public float DistanceToEnd => (float)Math.Sqrt(Math.Pow(EndPoint.Position.X - _position.X, 2) + Math.Pow(EndPoint.Position.Y - _position.Y, 2));
     }
 }

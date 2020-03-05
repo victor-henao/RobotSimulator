@@ -4,11 +4,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("LTI.RobotSimulator.UI")]
-[assembly: AssemblyDescription("A 2D simulator program that allows a robot to mova in a modeled environment")]
+[assembly: AssemblyTitle("LTI.RobotSimulator")]
+[assembly: AssemblyDescription("A 2D simulator program that allows a robot to move in a modeled environment")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("LTI")]
-[assembly: AssemblyProduct("LTI.RobotSimulator.UI")]
+[assembly: AssemblyProduct("LTI.RobotSimulator")]
 [assembly: AssemblyCopyright("Copyright ©  2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

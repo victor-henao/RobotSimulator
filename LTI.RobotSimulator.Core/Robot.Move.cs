@@ -7,11 +7,11 @@ namespace LTI.RobotSimulator.Core
 {
     partial class Robot
     {
-        public void Move()
+        public void Move(float deltaTime)
         {
             UpdateSensors();
             UpdateDirection();
-            ApplyAngle(LeftWheel.Speed, RightWheel.Speed);
+            ApplyAngle(LeftWheel.Speed * deltaTime, RightWheel.Speed * deltaTime);
             TransformShapes();
         }
 
@@ -20,7 +20,7 @@ namespace LTI.RobotSimulator.Core
         /// </summary>
         private void UpdateSensors()
         {
-            float highestSensorSpeed = 0.0F;
+            float highestSensorSpeed = 0;
 
             TrajectoryPoint trajectoryPoint = new TrajectoryPoint(_position, _theta)
             {
@@ -55,13 +55,13 @@ namespace LTI.RobotSimulator.Core
             }
             else if (Math.Round(GeometryTools.CrossProduct(Direction, Path)) < 0) // Left
             {
-                LeftWheel.Speed = _speed * 2F;
+                LeftWheel.Speed = _speed * 2;
                 RightWheel.Speed = _speed;
             }
             else if (Math.Round(GeometryTools.CrossProduct(Direction, Path)) > 0) // Right
             {
                 LeftWheel.Speed = _speed;
-                RightWheel.Speed = _speed * 2F;
+                RightWheel.Speed = _speed * 2;
             }
         }
 
@@ -83,8 +83,7 @@ namespace LTI.RobotSimulator.Core
             _position += new Vector2f(
                 (LeftWheel.Radius * leftWheelAngleDelta + RightWheel.Radius * rightWheelAngleDelta) / 2 * (float)Math.Cos(-_theta),
                 (LeftWheel.Radius * leftWheelAngleDelta + RightWheel.Radius * rightWheelAngleDelta) / 2 * (float)Math.Sin(-_theta));
-            //_x += (LeftWheel.Radius * leftWheelAngleDelta + RightWheel.Radius * rightWheelAngleDelta) / 2 * (float)Math.Cos(-_theta);
-            //_y += (LeftWheel.Radius * leftWheelAngleDelta + RightWheel.Radius * rightWheelAngleDelta) / 2 * (float)Math.Sin(-_theta);
+
             _theta += thetaDelta;
         }
 
@@ -93,9 +92,9 @@ namespace LTI.RobotSimulator.Core
         /// </summary>
         private void TransformShapes()
         {
-            Circle.Position = _position;
-            Rectangle.Position = _position;
-            Rectangle.Rotation = GeometryTools.ToDegrees(-_theta);
+            _circle.Position = _position;
+            _rectangle.Position = _position;
+            _rectangle.Rotation = GeometryTools.ToDegrees(-_theta);
 
             LeftWheel.Text.Position = new Vector2f(
                 _position.X + (float)Math.Cos((-Math.PI / 2) - _theta) * _radius,

@@ -246,19 +246,9 @@
             // speedNumericUpDown
             // 
             this.speedNumericUpDown.DecimalPlaces = 1;
-            this.speedNumericUpDown.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
             this.speedNumericUpDown.Location = new System.Drawing.Point(7, 20);
-            this.speedNumericUpDown.Maximum = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
             this.speedNumericUpDown.Minimum = new decimal(new int[] {
-            10,
+            100,
             0,
             0,
             -2147483648});

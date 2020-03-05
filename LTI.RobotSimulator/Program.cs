@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SFML.System;
+using System;
 using System.Windows.Forms;
 
 namespace LTI.RobotSimulator
@@ -16,13 +17,18 @@ namespace LTI.RobotSimulator
 
             using (Window window = new Window())
             {
-                window.Show();
-
-                while (window.Visible)
+                using (Clock clock = new Clock())
                 {
-                    Application.DoEvents();
-                    window.OnUpdate();
-                    window.OnRender();
+                    window.Show();
+
+                    while (window.Visible)
+                    {
+                        float deltaTime = clock.Restart().AsSeconds();
+
+                        Application.DoEvents();
+                        window.OnUpdate(deltaTime);
+                        window.OnRender();
+                    }
                 }
             }
         }

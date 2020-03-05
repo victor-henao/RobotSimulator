@@ -13,12 +13,12 @@ namespace LTI.RobotSimulator
 {
     public partial class Window : Form
     {
+        private RenderWindow _surface;
+
         public Window()
         {
             InitializeComponent();
         }
-
-        private RenderWindow Surface { get; set; }
 
         private void Window_Load(object sender, EventArgs e)
         {
@@ -37,17 +37,17 @@ namespace LTI.RobotSimulator
 
             CenterToScreen();
 
-            Surface = new RenderWindow(renderTarget.Handle, new ContextSettings());
-            Surface.SetFramerateLimit(60);
+            _surface = new RenderWindow(renderTarget.Handle);
+            _surface.SetVerticalSyncEnabled(true);
         }
 
-        public void OnUpdate()
+        public void OnUpdate(float deltaTime)
         {
             if (Simulation.HasStarted)
             {
                 if (Simulation.Robot.CanMove)
                 {
-                    Simulation.Robot.Move();
+                    Simulation.Robot.Move(deltaTime);
                     rotationNumericUpDown.Value = -(decimal)Simulation.Robot.Theta;
                 }
             }
@@ -68,12 +68,12 @@ namespace LTI.RobotSimulator
 
         public void OnRender()
         {
-            Surface.Clear(new Color(100, 150, 200, 255));
+            _surface.Clear(new Color(100, 150, 200, 255));
 
             // Draws obstacles
             foreach (DrawableLine obstacle in Simulation.Obstacles)
             {
-                obstacle.Draw(Surface, RenderStates.Default);
+                obstacle.Draw(_surface, RenderStates.Default);
             }
 
             // Draws the trajectory and the point cloud from a robot file
@@ -83,7 +83,7 @@ namespace LTI.RobotSimulator
                 {
                     foreach (TrajectoryPoint trajectoryPoint in RobotFile.Trajectory.Points)
                     {
-                        trajectoryPoint.Draw(Surface, RenderStates.Default);
+                        trajectoryPoint.Draw(_surface, RenderStates.Default);
                     }
                 }
 
@@ -91,7 +91,7 @@ namespace LTI.RobotSimulator
                 {
                     foreach (CloudPoint cloudPoint in RobotFile.PointCloud.Points)
                     {
-                        cloudPoint.Draw(Surface, RenderStates.Default);
+                        cloudPoint.Draw(_surface, RenderStates.Default);
                     }
                 }
             }
@@ -101,7 +101,7 @@ namespace LTI.RobotSimulator
             {
                 foreach (TrajectoryPoint trajectoryPoint in Simulation.Robot.Trajectory.Points)
                 {
-                    trajectoryPoint.Draw(Surface, RenderStates.Default);
+                    trajectoryPoint.Draw(_surface, RenderStates.Default);
                 }
             }
 
@@ -110,30 +110,30 @@ namespace LTI.RobotSimulator
             {
                 foreach (CloudPoint cloudPoint in Simulation.Robot.PointCloud.Points)
                 {
-                    cloudPoint.Draw(Surface, RenderStates.Default);
+                    cloudPoint.Draw(_surface, RenderStates.Default);
                 }
             }
 
             // Draws the robot
-            Simulation.Robot.Draw(Surface, RenderStates.Default);
+            Simulation.Robot.Draw(_surface, RenderStates.Default);
 
             // Draws the robot's sensors
             if (sensorsCheckBox.Checked)
             {
                 foreach (Sensor sensor in Simulation.Robot.Sensors)
                 {
-                    sensor.Draw(Surface, RenderStates.Default);
+                    sensor.Draw(_surface, RenderStates.Default);
                 }
             }
 
             // Draws the wheel's text
             if (wheelsCheckBox.Checked)
             {
-                Simulation.Robot.LeftWheel.Text.Draw(Surface, RenderStates.Default);
-                Simulation.Robot.RightWheel.Text.Draw(Surface, RenderStates.Default);
+                Simulation.Robot.LeftWheel.Text.Draw(_surface, RenderStates.Default);
+                Simulation.Robot.RightWheel.Text.Draw(_surface, RenderStates.Default);
             }
 
-            Surface.Display();
+            _surface.Display();
         }
 
         #region Event functions
@@ -155,7 +155,7 @@ namespace LTI.RobotSimulator
 
         private void ResetSpeedButton_Click(object sender, EventArgs e)
         {
-            speedNumericUpDown.Value = 0.0M;
+            speedNumericUpDown.Value = 0;
         }
 
         private void ResetRotationButton_Click(object sender, EventArgs e)

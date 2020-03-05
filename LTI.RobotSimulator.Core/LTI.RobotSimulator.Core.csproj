@@ -57,7 +57,7 @@
     <Compile Include="Geometry\GeometryTools.cs" />
     <Compile Include="Geometry\Line.cs" />
     <Compile Include="Geometry\Point.cs" />
-    <Compile Include="Geometry\PointCloud.cs" />
+    <Compile Include="PointCloud.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Robot.cs" />
     <Compile Include="Robot.Move.cs" />
