@@ -192,25 +192,19 @@ namespace LTI.RobotSimulator
 
         private void SaveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            using (saveFileDialog)
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
-                if (saveFileDialog.ShowDialog() == DialogResult.OK)
-                {
-                    RobotFile.Save(saveFileDialog.FileName);
-                }
+                RobotFile.Save(saveFileDialog.FileName);
             }
         }
 
         private void LoadToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            using (openFileDialog)
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
-                {
-                    RobotFile.Load(openFileDialog.FileName);
-                    robotFileGroupBox.Text = openFileDialog.SafeFileName;
-                    robotFileGroupBox.Visible = true;
-                }
+                RobotFile.Load(openFileDialog.FileName);
+                robotFileGroupBox.Text = openFileDialog.SafeFileName;
+                robotFileGroupBox.Visible = true;
             }
         }
         #endregion
