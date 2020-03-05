@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C0901AEB-FB76-4602-A323-4825816EE328}</ProjectGuid>
+    <ProjectGuid>{5DC6794C-9DA8-4CDA-8AE1-35F79443B067}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>LTI.RobotSimulator</RootNamespace>
     <AssemblyName>LTI.RobotSimulator</AssemblyName>
