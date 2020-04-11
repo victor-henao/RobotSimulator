@@ -16,19 +16,16 @@ namespace LTI.RobotSimulator
             Application.SetCompatibleTextRenderingDefault(false);
 
             using (Window window = new Window())
+            using (Clock clock = new Clock())
             {
-                using (Clock clock = new Clock())
+                window.Show();
+
+                while (window.Visible)
                 {
-                    window.Show();
-
-                    while (window.Visible)
-                    {
-                        float deltaTime = clock.Restart().AsSeconds();
-
-                        Application.DoEvents();
-                        window.OnUpdate(deltaTime);
-                        window.OnRender();
-                    }
+                    float deltaTime = clock.Restart().AsSeconds();
+                    Application.DoEvents();
+                    window.OnUpdate(deltaTime);
+                    window.OnRender();
                 }
             }
         }
