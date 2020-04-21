@@ -354,6 +354,7 @@
             this.Name = "Window";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Robot Simulator";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Window_FormClosed);
             this.Load += new System.EventHandler(this.Window_Load);
             this.robotGroupBox.ResumeLayout(false);
             this.robotGroupBox.PerformLayout();

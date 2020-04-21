@@ -207,6 +207,11 @@ namespace LTI.RobotSimulator
                 robotFileGroupBox.Visible = true;
             }
         }
+
+        private void Window_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            _surface.Close();
+        }
         #endregion
     }
 }
